@@ -13,7 +13,7 @@ struct SearchBookCell: View {
     @State private var bookImage: UIImage? = nil
     private let placeholderImge = UIImage(named: "bookPlaceholder")!
     
-    //It allows to set our own initializers for dependency injection
+    //This way we can force injection and keep displayData private.
     init(displayData: BookDisplayData) {
         self.displayData = displayData
     }
