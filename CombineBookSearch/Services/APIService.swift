@@ -11,7 +11,7 @@ import Combine
 
 enum APIService {
     
-    static var baseURL:String {
+    static private var baseURL: String {
         get {
             return "https://www.googleapis.com/books/v1/volumes?q="
         }
