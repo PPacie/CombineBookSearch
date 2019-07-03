@@ -38,8 +38,8 @@ final class SearchBookViewModel: BindableObject {
         print("Init ViewModel")
         
         searchCancellable = didChange.eraseToAnyPublisher()
-            .map{
-               $0.$searchText.value
+            .map {                
+               $0.$$searchText.value
             }
             .debounce(for: 0.5, scheduler: DispatchQueue.main)
             .removeDuplicates()

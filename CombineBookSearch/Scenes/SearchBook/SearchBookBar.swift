@@ -14,12 +14,8 @@ struct SearchBookBar : View {
     var body: some View {
         ZStack {
             Color.orange
-            HStack {
-                TextField(
-                    $text,
-                    placeholder: Text("type a book name...")
-                        .color(Color.gray)
-                    )                
+            HStack {                
+                TextField("type a book name...", text: $text)
                     .padding([.leading, .trailing], 8)
                     .frame(height: 32)
                     .background(Color.white.opacity(0.5))

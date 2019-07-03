@@ -14,10 +14,10 @@ struct SearchBookView : View {
     var body: some View {
         NavigationView {
             VStack {
-                SearchBookBar(text: viewModel[\.searchText]) 
+                SearchBookBar(text: viewModel[\.searchText])
                 
                 List(viewModel.items) { item in
-                    SearchBookCell(displayData: item)                    
+                    SearchBookCell(displayData: item)
                 }
             }
             .navigationBarTitle(Text("Books Search"))
