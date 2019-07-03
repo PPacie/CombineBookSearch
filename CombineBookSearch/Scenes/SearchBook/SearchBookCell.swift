@@ -37,9 +37,14 @@ struct SearchBookCell: View {
                     .fontWeight(.medium)
 
                 HStack {
-                    Text("Authors:").font(.footnote).fontWeight(.semibold).lineLimit(2)
+                    Text("Authors:")
+                        .font(.footnote)
+                        .fontWeight(.semibold)
+                        .lineLimit(2)
+                    
                     ForEach(displayData.authors.identified(by: \.self)) { e in
-                        Text(e).font(.footnote)
+                        Text(e)
+                            .font(.footnote)
                     }
                 }
             }
@@ -51,7 +56,7 @@ struct SearchBookCell: View {
 }
 
 #if DEBUG
-let bookDemoData = BookDisplayData(id: "1234", title: "Demo Book", authors: ["Pepe","Chuello"], description: "BookDescription", thumbnail: URL(string:"bookDemo")!)
+let bookDemoData = BookDisplayData(id: "1234", title: "Demo Book Demo Book Demo Book Demo Book Demo Book", authors: ["Pepe","Chuello"], description: "BookDescription", thumbnail: URL(string:"bookDemo")!)
 
 struct SearchBookCell_Previews : PreviewProvider {
     static var previews: some View {
