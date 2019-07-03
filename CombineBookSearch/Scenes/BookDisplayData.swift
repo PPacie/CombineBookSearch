@@ -15,4 +15,19 @@ struct BookDisplayData: Identifiable {
     let authors: [String]
     let description: String
     let thumbnail: URL?
+    
+    func fetchImage(completion: @escaping((UIImage?) -> Void)) {
+        guard let thumbURL = self.thumbnail else {
+            return
+        }
+        
+        //ApiService is supposed to return on the DispatchQueue.main
+        _ = APIService.fetchImageData(imageUrl: thumbURL)
+            .map { UIImage(data: $0) }
+            .replaceError(with: nil)
+            .sink { image in
+                completion(image)
+            }
+    }
 }
+

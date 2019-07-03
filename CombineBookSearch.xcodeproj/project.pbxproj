@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		670E17AE22CCD46000EF1886 /* BookDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670E17AD22CCD46000EF1886 /* BookDetail.swift */; };
 		6711BF2D22AD4A22008733B7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6711BF2C22AD4A22008733B7 /* AppDelegate.swift */; };
 		6711BF2F22AD4A22008733B7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6711BF2E22AD4A22008733B7 /* SceneDelegate.swift */; };
 		6711BF3322AD4A24008733B7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6711BF3222AD4A24008733B7 /* Assets.xcassets */; };
@@ -42,6 +43,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		670E17AD22CCD46000EF1886 /* BookDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetail.swift; sourceTree = "<group>"; };
 		6711BF2922AD4A22008733B7 /* CombineBookSearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CombineBookSearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6711BF2C22AD4A22008733B7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6711BF2E22AD4A22008733B7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -90,6 +92,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		670E17AC22CCD44200EF1886 /* BookDetail */ = {
+			isa = PBXGroup;
+			children = (
+				670E17AD22CCD46000EF1886 /* BookDetail.swift */,
+			);
+			path = BookDetail;
+			sourceTree = "<group>";
+		};
 		6711BF2022AD4A22008733B7 = {
 			isa = PBXGroup;
 			children = (
@@ -174,6 +184,7 @@
 			children = (
 				6711BF6D22AD643A008733B7 /* BookDisplayData.swift */,
 				67A5EFBF22AE898200380281 /* SearchBook */,
+				670E17AC22CCD44200EF1886 /* BookDetail */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -346,6 +357,7 @@
 				6711BF6622AD5DEE008733B7 /* SearchBookViewModel.swift in Sources */,
 				6711BF7022AD6C47008733B7 /* FoundationExtensions.swift in Sources */,
 				6711BF6E22AD643A008733B7 /* BookDisplayData.swift in Sources */,
+				670E17AE22CCD46000EF1886 /* BookDetail.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

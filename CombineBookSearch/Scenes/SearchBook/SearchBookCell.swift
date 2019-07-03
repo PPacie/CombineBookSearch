@@ -22,7 +22,11 @@ struct SearchBookCell: View {
         HStack {
             Image(uiImage: bookImage ?? placeholderImge)
                 .resizable()
-                .onAppear(perform: fetchImage)
+                .onAppear {
+                    self.displayData.fetchImage { image in
+                        self.bookImage = image
+                    }
+                }
                 .frame(width: 50, height: 65)
                 .clipShape(Rectangle())
                 .overlay(Rectangle().stroke(Color.gray, lineWidth: 1))
@@ -43,19 +47,6 @@ struct SearchBookCell: View {
             Spacer()
         }
         .frame(height: 65)
-    }
-    
-    private func fetchImage() {
-        guard let thumbURL = displayData.thumbnail else {
-            return
-        }
-        
-        _ = APIService.fetchImageData(imageUrl: thumbURL)
-            .map { UIImage(data: $0) }
-            .replaceError(with: nil)
-            .sink(receiveValue: { image in
-                self.bookImage = image
-            })
     }
 }
 
