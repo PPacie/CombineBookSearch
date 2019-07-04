@@ -56,7 +56,7 @@ struct SearchBookCell: View {
 }
 
 #if DEBUG
-let bookDemoData = BookDisplayData(id: "1234", title: "Demo Book Demo Book Demo Book Demo Book Demo Book", authors: ["Pepe","Chuello"], description: "BookDescription", thumbnail: URL(string:"bookDemo")!)
+let bookDemoData = BookDisplayData(id: "1234", title: "Demo Book Demo Book Demo Book Demo Book Demo Book", authors: ["Author1","Author2"], description: "BookDescription", thumbnail: URL(string:"bookDemo")!)
 
 struct SearchBookCell_Previews : PreviewProvider {
     static var previews: some View {
