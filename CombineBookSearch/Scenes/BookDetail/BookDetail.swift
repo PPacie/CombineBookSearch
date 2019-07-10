@@ -104,6 +104,50 @@ struct BookDetail : View {
                 .frame(width: reader.size.width, height: reader.size.height)                
             }
         }
+        /* NOTE: Another alternative using List. Downside is that it's still not possible to remove the separator lines in SwiftUI.
+         
+        List {
+            HStack {
+                Spacer()
+                
+                Image(uiImage: self.bookImage ?? self.placeholderImge)
+                    .resizable()
+                    .onAppear {
+                        self.displayData.fetchImage { image in
+                            self.bookImage = image
+                        }
+                }
+                .frame(width: 100, height: 150)
+                    .clipShape(Rectangle())
+                    .overlay(Rectangle()
+                        .stroke(Color.gray, lineWidth: 1))
+                
+                Spacer()
+            }
+            
+            Text(self.displayData.title)
+                .font(.title)
+                .multilineTextAlignment(.center)
+                .lineLimit(nil)
+                .padding()
+            
+            Text("Authors:")
+                .font(.footnote)
+                .fontWeight(.semibold)
+                .multilineTextAlignment(.center)
+            ForEach(self.displayData.authors.identified(by: \.self)) { author in
+                Text(author)
+                    .multilineTextAlignment(.center)
+                    .font(.footnote)
+                    .lineLimit(nil)
+            }
+            
+            Text(self.displayData.description)
+                .multilineTextAlignment(.center)
+                .lineLimit(nil)
+                .padding()
+        }
+        */
     }
 }
 
