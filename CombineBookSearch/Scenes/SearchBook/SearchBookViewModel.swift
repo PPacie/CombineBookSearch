@@ -10,18 +10,18 @@ import SwiftUI
 import Combine
 
 final class SearchBookViewModel: BindableObject {
-    var didChange = PassthroughSubject<SearchBookViewModel, Never>()
+    var willChange = PassthroughSubject<SearchBookViewModel, Never>()
     
     @Published var searchText = "" {
-        didSet { didChange.send(self) }
+        didSet { willChange.send(self) }
     }
     
     private (set) var items = [BookDisplayData]() {
-        didSet { didChange.send(self) }
+        didSet { willChange.send(self) }
     }
     
     private (set) var itemImages = [String: UIImage]() {
-        didSet { didChange.send(self) }
+        didSet { willChange.send(self) }
     }
     
     private var searchCancellable: Cancellable? {
@@ -37,9 +37,9 @@ final class SearchBookViewModel: BindableObject {
     init () {
         print("Init ViewModel")
         
-        searchCancellable = didChange.eraseToAnyPublisher()
-            .map {                
-               $0.$$searchText.value
+        searchCancellable = willChange.eraseToAnyPublisher()
+            .map {               
+                $0._searchText.value
             }
             .debounce(for: 0.5, scheduler: DispatchQueue.main)
             .removeDuplicates()

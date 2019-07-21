@@ -42,7 +42,7 @@ struct SearchBookCell: View {
                         .fontWeight(.semibold)
                         .lineLimit(2)
                     
-                    ForEach(displayData.authors.identified(by: \.self)) { e in
+                    ForEach(displayData.authors, id: \.self) { e in
                         Text(e)
                             .font(.footnote)
                     }
