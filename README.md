@@ -9,8 +9,8 @@ Example project of [SwiftUI](https://developer.apple.com/xcode/swiftui) and [Com
 
 ## Requirements
 
-- Xcode 11 Beta 3 
-- macOS 10.15 for SwiftUI Previews
+- Xcode 11 Beta 5 
+- macOS 10.15 Beta 5 for SwiftUI Previews
 
 ## Credit
 - It makes uses of the [Google Books API](https://developers.google.com/books/docs/v1/using) to perform the search.
