@@ -16,7 +16,7 @@ struct BookDisplayData: Identifiable {
     let description: String
     let thumbnail: URL?
     
-    func fetchImage(completion: @escaping((UIImage?) -> Void)) {
+    func fetchImage(completion: @escaping(UIImage?) -> Void) {
         guard let thumbURL = self.thumbnail else {
             return
         }
