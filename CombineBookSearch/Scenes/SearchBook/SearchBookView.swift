@@ -9,12 +9,12 @@
 import SwiftUI
 
 struct SearchBookView : View {
-    @ObjectBinding private var viewModel = SearchBookViewModel()
+    @ObservedObject private var viewModel = SearchBookViewModel()
     
     var body: some View {
         NavigationView {
             VStack {
-                SearchBookBar(text: viewModel[\.searchText])                
+                SearchBookBar(text: $viewModel.searchText)
                 List(viewModel.items) { item in
                     /*
                       FB6465137
