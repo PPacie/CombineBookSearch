@@ -9,19 +9,10 @@
 import SwiftUI
 import Combine
 
-final class SearchBookViewModel: ObservableObject {    
-    
-    @Published var searchText = "" {
-        willSet { objectWillChange.send() }
-    }
-    
-    private (set) var items = [BookDisplayData]() {
-        willSet { objectWillChange.send() }
-    }
-    
-    private (set) var itemImages = [String: UIImage]() {
-        willSet { objectWillChange.send() }
-    }
+final class SearchBookViewModel: ObservableObject {
+    @Published var searchText = ""
+    @Published private (set) var items = [BookDisplayData]()
+    @Published private (set) var itemImages = [String: UIImage]()
     
     private var searchCancellable: Cancellable? {
         didSet {

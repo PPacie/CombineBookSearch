@@ -48,8 +48,6 @@ struct SearchBookCell: View {
                     }
                 }
             }
-
-            Spacer()
         }
         .frame(height: 65)
     }
