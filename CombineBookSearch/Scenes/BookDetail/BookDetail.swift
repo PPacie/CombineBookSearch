@@ -19,7 +19,53 @@ struct BookDetail : View {
     }
     
     var body: some View {
-        
+        List {
+            VStack {
+                HStack {
+                    Spacer()
+                    
+                    Image(uiImage: self.bookImage ?? self.placeholderImge)
+                        .resizable()
+                        .onAppear {
+                            self.displayData.fetchImage { image in
+                                self.bookImage = image
+                            }
+                    }
+                    .frame(width: 100, height: 150)
+                    .clipShape(Rectangle())
+                    .overlay(Rectangle().stroke(Color.gray, lineWidth: 1))
+                    
+                    Spacer()
+                }
+                
+                Text(self.displayData.title)
+                    .font(.title)
+                    .multilineTextAlignment(.center)
+                    .lineLimit(nil)
+                    .padding()
+                
+                Text("Authors:")
+                    .font(.footnote).fontWeight(.bold)
+                    .multilineTextAlignment(.center)
+                    .lineLimit(1)
+                    .padding(0)
+                
+                ForEach(self.displayData.authors, id: \.self) { author in
+                    Text(author)
+                        .multilineTextAlignment(.center)
+                        .font(.footnote)
+                        .lineLimit(1)
+                        .padding(1)
+                }
+                
+                Text(self.displayData.description)
+                    .multilineTextAlignment(.center)
+                    .lineLimit(nil)
+                    .padding()
+            }
+        }
+    }
+}
         /*
             NOTE: Usually we would do something like the code below, but it seems that there is some sort of bug with dynamic content   and ScrollView in SwiftUI.
             ref: https://stackoverflow.com/questions/56826050/how-to-get-dynamic-text-height-for-a-scrollview-with-swiftui
@@ -34,122 +80,17 @@ struct BookDetail : View {
             }
             .frame(width: 100, height: 150)
                 .clipShape(Rectangle())
-                .overlay(Rectangle()
-                    .stroke(Color.gray, lineWidth: 1))
+                .overlay(Rectangle().stroke(Color.gray, lineWidth: 1))
                 .edgesIgnoringSafeArea(.all)
             
-            Text(self.displayData.title)
-                .font(.title)
-                .multilineTextAlignment(.center)
-                .lineLimit(nil)
-                .padding()
-            
-            Text("Authors:")
-                .font(.footnote)
-                .fontWeight(.semibold)
-            ForEach(self.displayData.authors.identified(by: \.self)) { author in
-                Text(author)
-                    .font(.footnote)
-                    .lineLimit(nil)
-            }
-            
             Text(self.displayData.description)
                 .multilineTextAlignment(.center)
                 .lineLimit(nil)
                 .padding()
         }
         */
-        
-        //NOTE: This is a work aroud to the dynamic content issue. It doesn't work 100% though as it doesn't get the Text fully extended and truncates it at the bottom of the screen.
-        GeometryReader { reader in
-            ScrollView {
-                ZStack(alignment: .top) {
-                    VStack {
-                        Image(uiImage: self.bookImage ?? self.placeholderImge)
-                            .resizable()
-                            .onAppear {
-                                self.displayData.fetchImage { image in
-                                    self.bookImage = image
-                                }
-                            }
-                            .frame(width: 100, height: 150)
-                            .clipShape(Rectangle())
-                            .overlay(Rectangle()
-                            .stroke(Color.gray, lineWidth: 1))
-                        
-                        Text(self.displayData.title)
-                            .font(.title)
-                            .multilineTextAlignment(.center)
-                            .lineLimit(nil)
-                            .padding()
-                        
-                        
-                        Text("Authors:")
-                            .font(.footnote)
-                            .fontWeight(.semibold)
-                        ForEach(self.displayData.authors, id: \.self) { author in
-                            Text(author)
-                                .font(.footnote)
-                                .lineLimit(nil)
-                        }
-                        
-                        Text(self.displayData.description)
-                            .multilineTextAlignment(.center)
-                            .lineLimit(nil)
-                            .padding()
-                       
-                        Spacer()
-                    }
-                }
-                .frame(width: reader.size.width, height: reader.size.height)                
-            }
-        }
-        /* NOTE: Another alternative using List. Downside is that it's still not possible to remove the separator lines in SwiftUI.
          
-        List {
-            HStack {
-                Spacer()
-                
-                Image(uiImage: self.bookImage ?? self.placeholderImge)
-                    .resizable()
-                    .onAppear {
-                        self.displayData.fetchImage { image in
-                            self.bookImage = image
-                        }
-                }
-                .frame(width: 100, height: 150)
-                    .clipShape(Rectangle())
-                    .overlay(Rectangle()
-                        .stroke(Color.gray, lineWidth: 1))
-                
-                Spacer()
-            }
-            
-            Text(self.displayData.title)
-                .font(.title)
-                .multilineTextAlignment(.center)
-                .lineLimit(nil)
-                .padding()
-            
-            Text("Authors:")
-                .font(.footnote)
-                .fontWeight(.semibold)
-                .multilineTextAlignment(.center)
-            ForEach(self.displayData.authors.identified(by: \.self)) { author in
-                Text(author)
-                    .multilineTextAlignment(.center)
-                    .font(.footnote)
-                    .lineLimit(nil)
-            }
-            
-            Text(self.displayData.description)
-                .multilineTextAlignment(.center)
-                .lineLimit(nil)
-                .padding()
-        }
-        */
-    }
-}
+        
 
 #if DEBUG
 struct BookDetail_Previews : PreviewProvider {
