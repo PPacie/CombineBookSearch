@@ -9,11 +9,10 @@
 import SwiftUI
 
 struct SearchBookCell: View {
-    private var displayData: BookDisplayData
     @State private var bookImage: UIImage? = nil
     private let placeholderImge = UIImage(named: "bookPlaceholder")!
+    private let displayData: BookDisplayData
     
-    //This way we can force injection and keep displayData private.
     init(displayData: BookDisplayData) {
         self.displayData = displayData
     }
